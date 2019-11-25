@@ -1,0 +1,143 @@
+//master
+//two echos
+#include <SoftwareSerial.h>
+SoftwareSerial BT(7,8);
+
+int input1 = 5; // 定义uno的pin 5 向 input1 输出 
+int input2 = 6; // 定义uno的pin 6 向 input2 输出
+int input3 = 9; // 定义uno的pin 9 向 input3 输出
+int input4 = 4; // 定义uno4的pin 10 向 input4 输出
+int ENA = 10;
+int ENB = 11;
+int trigs_R = 13;
+int echos_R = 12;
+int trigs_L = 3;
+int echos_L = 2;
+//int data;
+int A = 120;
+int B = 120;
+//char val;
+
+void setup() {
+  Serial.begin(9600);
+  BT.begin(9600);
+  
+  pinMode(input1,OUTPUT); // Left
+  pinMode(input2,OUTPUT);
+  pinMode(input3,OUTPUT); // Right
+  pinMode(input4,OUTPUT);
+  pinMode(ENA,OUTPUT);  // EN 1
+  pinMode(ENB,OUTPUT); // EN 2
+  pinMode(13,OUTPUT);  // SONAR TRIG_R
+  pinMode(12,INPUT);  // SONAR ECHO_R
+  pinMode(3,OUTPUT);  // SONAR TRIG_L
+  pinMode(2,INPUT);  // SONAR ECHO_L
+  //pinMode(A0,INPUT);  // Iris
+}
+
+void loop() {
+  //int echos=analogRead(A0);
+  digitalWrite(trigs_R,LOW);  
+  delayMicroseconds(2);
+  digitalWrite(trigs_R,HIGH);
+  delayMicroseconds(5);
+  digitalWrite(trigs_R,LOW);    //发一个10ms的高脉冲去触发TrigPin
+  float distanceF_R = pulseIn(echos_R,HIGH); //接收高电平时间
+ 
+  distanceF_R = distanceF_R/58.0; //计算距离
+
+
+  digitalWrite(trigs_L,LOW);  
+  delayMicroseconds(2);
+  digitalWrite(trigs_L,HIGH);
+  delayMicroseconds(5);
+  digitalWrite(trigs_L,LOW);    //发一个10ms的高脉冲去触发TrigPin
+  float distanceF_L = pulseIn(echos_L,HIGH); //接收高电平时间
+  //Serial.println(data);
+  //delay(100);
+  distanceF_L = distanceF_L/58.0; //计算距离
+
+  Serial.print('R');
+  Serial.println(distanceF_R);
+  Serial.print('L');
+  Serial.println(distanceF_L);
+
+  if((distanceF_R<500)&&(distanceF_L<500))  {  
+    float del = distanceF_R - distanceF_L;        //detect the difference between two Ultrasonics
+
+  if ((distanceF_R<50)||(distanceF_L<50))
+    { 
+      if(-10 < del < 10)
+      {
+      back();
+      //Serial.print('R');
+      //Serial.println(distanceF_R);
+      //Serial.print('L');
+      //Serial.println(distanceF_L);
+       BT.write('f');
+      //turn_left();
+      }
+    if (del < -10)
+    { 
+      //Serial.println(distanceF);
+    //forward();
+    back();
+    BT.write('r');
+   }
+   if (del > 10)
+    { 
+      //Serial.println(distanceF);
+    //forward();
+    back();
+    BT.write('l');
+   }
+    }
+   //if ((distanceF_R>50)&&(distanceF_L>50))
+   else
+   { 
+      //Serial.println(distanceF);
+    //forward();
+    pause();
+    BT.write('s');
+   }
+  }
+}
+
+void pause(){
+  digitalWrite(input1,LOW);
+  digitalWrite(input2,LOW);  
+  digitalWrite(input3,LOW);
+  digitalWrite(input4,LOW);  
+ // delay(50);  //延时0.5秒
+}
+
+void back(){ 
+  analogWrite(ENA,A);
+  analogWrite(ENB,B);
+  digitalWrite(input1,LOW);
+  digitalWrite(input2,HIGH);  
+  digitalWrite(input3,LOW);
+  digitalWrite(input4,HIGH);  
+  //delay(50);    
+}
+
+void forward()
+{ analogWrite(ENA,A);
+  analogWrite(ENB,B);
+  digitalWrite(input1,HIGH);
+  digitalWrite(input2,LOW);  
+  digitalWrite(input3,HIGH);
+  digitalWrite(input4,LOW);  
+ // delay(100);    
+}
+
+void turn_left()
+
+ {
+  //analogWrite(3,100);
+  //analogWrite(11,200);
+  digitalWrite(input1,HIGH);
+  digitalWrite(input2,LOW);  
+  digitalWrite(input3,LOW);
+  digitalWrite(input4,HIGH);     
+}
