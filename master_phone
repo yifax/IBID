@@ -1,0 +1,172 @@
+//master
+#include <SoftwareSerial.h>
+SoftwareSerial BT(7,8);
+
+
+const String GO = "G";
+const String BACK = "B";
+const String RIGHT = "R";
+const String LEFT = "L";
+const String STOP = "S";
+int IN1 = 5; // 定义uno的pin 5 向 input1 输出 
+int IN2 = 6; // 定义uno的pin 6 向 input2 输出
+int IN3 = 9; // 定义uno的pin 9 向 input3 输出
+int IN4 = 4; // 定义uno4的pin 10 向 input4 输出
+int EN1 = 10;
+int EN2 = 11;
+int trigs_R = 13;
+int echos_R = 12;
+int trigs_L = 3;
+int echos_L = 2;
+//int data;
+int A = 120;
+int B = 120;
+void setup()
+{
+//pinMode(PinA,INPUT);3332
+//attachInterrupt(0,blinkA,FALLING);
+Serial.begin(9600);
+ pinMode(IN1,OUTPUT);
+  pinMode(IN2,OUTPUT);
+  pinMode(IN3,OUTPUT);
+  pinMode(IN4,OUTPUT);
+  pinMode(EN1,OUTPUT);
+  pinMode(EN2,OUTPUT);
+  digitalWrite(IN1,HIGH);
+  digitalWrite(IN2,HIGH);
+  digitalWrite(IN3,HIGH);
+  digitalWrite(IN4,HIGH);
+//FlexiTimer2::set(1000,1.0/1000,event);
+//FlexiTimer2::start();
+}
+void loop()
+{
+
+  digitalWrite(trigs_R,LOW);  
+  delayMicroseconds(2);
+  digitalWrite(trigs_R,HIGH);
+  delayMicroseconds(5);
+  digitalWrite(trigs_R,LOW);    //发一个10ms的高脉冲去触发TrigPin
+  float distanceF_R = pulseIn(echos_R,HIGH); //接收高电平时间
+ 
+  distanceF_R = distanceF_R/58.0; //计算距离
+
+
+  digitalWrite(trigs_L,LOW);  
+  delayMicroseconds(2);
+  digitalWrite(trigs_L,HIGH);
+  delayMicroseconds(5);
+  digitalWrite(trigs_L,LOW);    //发一个10ms的高脉冲去触发TrigPin
+  float distanceF_L = pulseIn(echos_L,HIGH); //接收高电平时间
+  //Serial.println(data);
+  //delay(100);
+  distanceF_L = distanceF_L/58.0; //计算距离
+
+  if ((distanceF_R<10)||(distanceF_L<10))
+    { 
+      Stop();
+      Serial.print('R');
+      Serial.println(distanceF_R);
+      Serial.print('L');
+      Serial.println(distanceF_L);
+       BT.write('s');
+      //turn_left();
+    }
+  else
+    { 
+      String s = readTtl();
+    Serial.println(s);
+    if (s == GO ) {
+      forward();
+      BT.write('f');
+     // delay(100);
+      }
+     if (s == RIGHT ){ 
+      left();
+      BT.write('l');
+      //delay(100);
+      }
+    if (s == STOP ) {
+      Stop();
+      BT.write('s');
+      }
+     if (s ==LEFT  ) {
+      right();
+      BT.write('r');
+     // delay(100);
+      }
+    if (s == BACK ) {
+      backup();
+      BT.write('b');
+     // delay(100);
+      }
+      //Serial.println(distanceF);
+    BT.write('1');
+   }
+
+
+
+   
+  
+}
+
+String readTtl()
+  {
+    String comdata = "";
+   // while (Serial.available())
+    //  {
+        comdata += char(Serial.read());
+         delay(2);
+    //   }
+    return comdata;
+  }
+  
+  void backup()
+  {
+  digitalWrite(IN1,HIGH);
+  digitalWrite(IN2,LOW);
+  analogWrite(EN1,A);
+  digitalWrite(IN3,HIGH);
+  digitalWrite(IN4,LOW);
+  analogWrite(EN2,B);
+   }
+   
+void forward()
+  {
+  digitalWrite(IN1,LOW);
+  digitalWrite(IN2,HIGH);
+  analogWrite(EN1,A);
+  digitalWrite(IN3,LOW);
+  digitalWrite(IN4,HIGH);
+  analogWrite(EN2,B);
+  
+  }
+void left()
+  {
+  digitalWrite(IN1,LOW);
+  digitalWrite(IN2,HIGH);
+  analogWrite(EN1,A);
+  digitalWrite(IN3,HIGH);
+  digitalWrite(IN4,LOW);
+  analogWrite(EN2,B);
+ 
+  }
+void right()
+  {
+  digitalWrite(IN1,HIGH);
+  digitalWrite(IN2,LOW);
+  analogWrite(EN1,A);
+  digitalWrite(IN3,LOW);
+  digitalWrite(IN4,HIGH);
+  analogWrite(EN2,B);
+
+  }
+void Stop()
+  {
+  digitalWrite(IN1,LOW);
+  digitalWrite(IN2,LOW);
+  analogWrite(EN1,30);
+  digitalWrite(IN3,LOW);
+  digitalWrite(IN4,LOW);
+  analogWrite(EN2,30);
+  }
