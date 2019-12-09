@@ -1,5 +1,6 @@
+//slave
 #include <SoftwareSerial.h>
-SoftwareSerial BT(7,8);
+SoftwareSerial BT(12,13);
 
 int input1 = 5; // 定义uno的pin 5 向 input1 输出 
 int input2 = 6; // 定义uno的pin 6 向 input2 输出
@@ -9,12 +10,12 @@ int ENA = 10;
 int ENB = 11;
 int trigs = 13;
 int echos = 12;
+// PWM 
 int A = 100;
-int B = 90;
+int B = 100;
 
 char val;
 void setup() {
-  //pinMode(13,OUTPUT);
   Serial.begin(9600);
   BT.begin(9600);
 }
@@ -22,39 +23,36 @@ void setup() {
 void loop() {
   if(BT.available()){
     val=BT.read();
-    Serial.println(val);
   
-  if(val=='1'){
-      Serial.println('1');
-      forward();
-      delay(50);
+    if(val=='f'){
+      back();
+      delay(100);
     }
-  else if(val=='0'){
-      Serial.println('0');
+    else if(val=='s'){
       pause();
-      delay(50);
-  }
-  else if (val=='2'){
-      Serial.println('2');
+    }
+    else if(val=='l'){
       turn_left();
-      delay(10);
+      delay(50);
+      pause();
+    }
+    else if(val=='r'){
+      turn_right();
+      delay(50);
+      pause();
+    }
+    else if(val=='b'){
+      forward();
+      delay(100);
+    }
   }
-  else if (val=='3'){
-      Serial.println('3');
-      //turn_right();
-      delay(10);
-  }
-}
-
- // forward();
-}
+ }
 
 void pause(){
   digitalWrite(input1,LOW);
   digitalWrite(input2,LOW);  
   digitalWrite(input3,LOW);
   digitalWrite(input4,LOW);  
-  //delay(50);  //延时0.5秒
 }
 
 void back(){ 
@@ -64,7 +62,6 @@ void back(){
   digitalWrite(input2,HIGH);  
   digitalWrite(input3,LOW);
   digitalWrite(input4,HIGH);  
-  delay(50);    
 }
 
 void forward()
@@ -73,20 +70,22 @@ void forward()
   digitalWrite(input1,HIGH);
   digitalWrite(input2,LOW);  
   digitalWrite(input3,HIGH);
-  digitalWrite(input4,LOW);  
- // delay(100);    
+  digitalWrite(input4,LOW);     
 }
 
 void turn_left()
-
- {
-  //analogWrite(3,100);
-  //analogWrite(11,200);
-  
+{ analogWrite(ENA,0);
+  analogWrite(ENB,150);
   digitalWrite(input1,HIGH);
   digitalWrite(input2,LOW);  
-  digitalWrite(input3,LOW);
-  digitalWrite(input4,HIGH);  
-
-  delay(100);    
+  digitalWrite(input3,HIGH);
+  digitalWrite(input4,LOW);     
+}
+void turn_right()
+{ analogWrite(ENA,150);
+  analogWrite(ENB,0);
+  digitalWrite(input1,HIGH);
+  digitalWrite(input2,LOW);  
+  digitalWrite(input3,HIGH);
+  digitalWrite(input4,LOW);     
 }
