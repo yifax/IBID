@@ -30,5 +30,4 @@ Week10             Testing and demo
 
 ### Team Members
 Zeyu Wang
-Wanli Gao
 Yifan Xu
