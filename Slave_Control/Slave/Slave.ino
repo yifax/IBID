@@ -11,7 +11,7 @@ int ENB = 11;
 int trigs = 13;
 int echos = 12;
 // PWM 
-int A = 100;
+int A = 110;
 int B = 100;
 
 char val;
@@ -26,27 +26,29 @@ void loop() {
   
     if(val=='f'){
       back();
-      delay(100);
+      delay(400);
+      pause();
     }
     else if(val=='s'){
       pause();
     }
     else if(val=='l'){
-      turn_left();
-      delay(50);
+      turn_right();
+      delay(80);
       pause();
     }
     else if(val=='r'){
-      turn_right();
-      delay(50);
+      turn_left();
+      delay(80);
       pause();
     }
     else if(val=='b'){
       forward();
-      delay(100);
+      delay(150);                                                                  
+      pause();
     }
   }
- }
+}
 
 void pause(){
   digitalWrite(input1,LOW);
