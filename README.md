@@ -5,9 +5,11 @@
 * Zeyu Wang
 * Yifan Xu
 
-### Project Goal
-* To build a algorithm for autopilot vehicles, which can provide a reliable communication protocol between two or more vehicles.
-* Instead of adding onboard sensors, we want to make the following car to be blind but auto-pilotable basing on the information shared from the leading car. 
+### Project Summary
+##### Goal
+To build a algorithm for autopilot vehicles, which can provide a reliable communication protocol between two or more vehicles.
+##### Deliverable
+Instead of adding onboard sensors, we want to make the following car to be blind but auto-pilotable basing on the information shared from the leading car. 
 
 ### Hardware Used in This Porject
 * Arduino Uno
