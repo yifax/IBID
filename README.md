@@ -1,33 +1,49 @@
-# Welcome to the Webpage of Project IBID
-## Interaction between Intelligent Devices Project
-
-### Project Summary 
-The goal of this project is to build a autopilot following algorithm, which the later car could auto run basing on the infomation shared from the bellwether car. We are going to built at least two car for demo. The first one will run like a normal vehicle while the second one will have no other source but the infomation shared from the first car.
-
-### Approach
-Car 1: 
-Mode 1:driven by human 
-Mode 2: self-driving
-
-Car 2:
-No sensor,Interaction with Car 1(get the environment information from Car 1)
-Navigated by car 1
-
-Information share system:
-Dynamic system(dynamic obstacle)
-Path planning optimization algorithm
-
-### Rough Timeline
-Week4 to Week5     Construction of intelligent car
-
-Week6 to Week7     Inplement interaction between two cars 
-
-Week8 to Week9     Inplement interatcion between three cars 
-
-Week10             Testing and demo
-
-
+# Project IBID
+## Interaction Between Intelligent Devices
 
 ### Team Members
-Zeyu Wang
-Yifan Xu
+* Zeyu Wang
+* Yifan Xu
+
+### Project Summary
+##### Goal
+To build a algorithm for autopilot vehicles, which can provide a reliable communication protocol between two or more vehicles.
+##### Deliverable
+Instead of adding onboard sensors, we want to make the following car to be blind but auto-pilotable basing on the information shared from the leading car. 
+
+### Hardware Used in This Porject
+* Arduino Uno
+* Raspberry Pi 3B+
+* Ultrasonic Sensor
+* IR Dectector
+* L298N Motor Drive Controller
+* HC-05 Bluetooth Chip
+* ESP8266 WiFi Chip
+* Feasycom Long Range Bluetooth iBeacons
+* Echo Dot V3
+
+### Part 1: Interaction between Two Cars: Car Following Algorithm
+#### Features
+* Leading car have multiple sensors, following car have no sensor.
+* Leading car transmits detected environment information to the following car.
+* Leading car controls the following car by command signals via Bluetooth channel.
+#### Demo
+[![Demo Video](/Src/Demo1.png)](https://www.youtube.com/watch?v=8CCx7NysUWU)
+
+### Part 2: Interactions between Cars and Bluetooth Stations: Indoor Positioning System via RSSI
+#### Algorithm
+* Step 1: Scan the RSSI values
+* Step 2: Find out three Bluetooth iBeacons by filtering Bluetooth addresses
+* Step 3: Calculate distances between the car and all three iBeacons
+* Step 4: Calculate car coordinate pair by applying Heron's formula
+* Step 5: Use this coordinate for indoor navigation
+#### Demo
+[![Demo Video](/Src/Demo2.png)](https://www.youtube.com/watch?v=NX05F57GPa4)
+
+### Part 3: Interactions between Human and Cars: Voice Control Sysyem
+#### Features
+* Voice commands activate Echo Dot
+* Alexa API send Raspberry Pi server processed NLP package: [{Device name}, {Operation name}]
+* Raspberry Pi controls Master car directly and controls Slave cars by Bluetooth command signals
+#### Demo
+
