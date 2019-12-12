@@ -1,21 +1,24 @@
-# Welcome to the Webpage of Project IBID
-## Interaction between Intelligent Devices Project
+# Project IBID
+## Interaction Between Intelligent Devices
 
-### Project Summary 
-The goal of this project is to build a autopilot following algorithm, which the later car could auto run basing on the infomation shared from the bellwether car. We are going to built at least two car for demo. The first one will run like a normal vehicle while the second one will have no other source but the infomation shared from the first car.
+### Team Members
+Zeyu Wang
+Yifan Xu
 
-### Approach
-Car 1: 
-Mode 1:driven by human 
-Mode 2: self-driving
+### Project Goal
+* To build a algorithm for autopilot vehicles, which can provide a reliable communication protocol between two or more vehicles.
+* Instead of adding onboard sensors, we want to make the following car to be blind but auto-pilotable basing on the information shared from the leading car. 
 
-Car 2:
-No sensor,Interaction with Car 1(get the environment information from Car 1)
-Navigated by car 1
-
-Information share system:
-Dynamic system(dynamic obstacle)
-Path planning optimization algorithm
+### Hardware Used in This Porject
+Arduino Uno
+Raspberry Pi 3B+
+Ultrasonic Sensor
+IR Dectector
+L298N Motor Drive Controller
+HC-05 Bluetooth Chip
+ESP8266 WiFi Chip
+Feasycom Long Range Bluetooth iBeacons
+Echo Dot V3
 
 ### Rough Timeline
 Week4 to Week5     Construction of intelligent car
@@ -28,6 +31,3 @@ Week10             Testing and demo
 
 
 
-### Team Members
-Zeyu Wang
-Yifan Xu
