@@ -90,6 +90,7 @@ python3 testblescan.py
 * Build an `Alexa Skill` to do Nature Language Processing in the Cloud
 * Utilize `Alexa API` to send Raspberry Pi processed voice commands package, including to main part [{Device name}, {Operation name}]
 * Raspberry Pi then follows command to control the leading car directly, and controls the following cars by Bluetooth command signals
+![voice](/Src/alexa.png)
 
 #### Platform and Tools
 ![voice](/Src/voice.png)
