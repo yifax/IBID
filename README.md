@@ -58,14 +58,26 @@ python3 ControlBT.py
 [![Demo Video](/Src/Demo1.png)](https://www.youtube.com/watch?v=8CCx7NysUWU)
 
 
+
 ### Part 2: Interactions between Cars and Bluetooth Stations: Indoor Positioning System via RSSI
 
 #### Algorithm
 * Step 1: Scan the RSSI values
 * Step 2: Find out three Bluetooth iBeacons by filtering Bluetooth addresses
 * Step 3: Calculate distances between the car and all three iBeacons
-* Step 4: Calculate car coordinate pair by applying Heron's formula
+* Step 4: Calculate car coordinate pair by applying **Heron's formula**
 * Step 5: Use this coordinate for indoor navigation
+
+#### Indoor Positioning Coordinates
+![Splitting](/Src/RSSI.jpg)
+
+#### Codesand Test Instructions
+`pybluez` library is necessary for running RSSI code.
+```bash
+pip install pybluez
+cd IBID/Rssi
+python3 testblescan.py
+```
 
 #### Demo
 [![Demo Video](/Src/Demo2.png)](https://www.youtube.com/watch?v=4V5qMFQUmjc)
@@ -73,15 +85,21 @@ python3 ControlBT.py
 
 ### Part 3: Interactions between Human and Cars: Voice Control Sysyem
 
-#### Features
-* Voice commands activate Echo Dot
-* Alexa API send Raspberry Pi server processed NLP package: [{Device name}, {Operation name}]
-* Raspberry Pi controls Master car directly and controls Slave cars by Bluetooth command signals
+#### Process
+* Make Raspberry Pi to be a `Linux Server`
+* Use `Echo Dot`/`Amazon Alexa App` to fetch voice commands
+* Build an `Alexa Skill` to do Nature Language Processing in the Cloud
+* Utilize `Alexa API` to send Raspberry Pi processed voice commands package, including to main part [{Device name}, {Operation name}]
+* Raspberry Pi then follows command to control the leading car directly, and controls the following cars by Bluetooth command signals
+
+#### Platform and Tools
+![Splitting](/Src/voice.png)
 
 #### Demo
 [![Demo Video](/Src/Demo3.png)](https://www.youtube.com/watch?v=NX05F57GPa4)
 
-### Part 3: Combine 3 Parts Together
+
+### Final Stage: Combine 3 Parts Together
 We combine all three parts above together to make our final demo. In this demo, we use voice to activate the leading car(Master). When leading car moves, it trigers the following algorithm, which guide the following car(Slave) to follow behind but keep a safe distance.
 
 #### Demo
