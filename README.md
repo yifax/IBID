@@ -29,7 +29,7 @@ Instead of adding onboard sensors, we want to make the following car to be blind
 * Leading car transmits detected environment information to the following car.
 * Leading car controls the following car by command signals via Bluetooth channel.
 
-#### Codes and Instructions
+#### Tst Code and Instructions
 
 ##### Raspberry Pi GPIO Connection
 ![GPIO](/Src/GPIO.png)
@@ -53,7 +53,6 @@ python3 ControlBT.py
 ##### Download Arduino Code to the Following Car
 `Slave.ino` in `IBID/Slave_Control/Slave`
 
-
 #### Demo
 [![Demo Video](/Src/Demo1.png)](https://www.youtube.com/watch?v=8CCx7NysUWU)
 
@@ -71,7 +70,7 @@ python3 ControlBT.py
 #### Indoor Positioning Coordinates
 ![RSSI](/Src/RSSI.jpg)
 
-#### Codesand Test Instructions
+#### Test Code and Test Instructions
 `pybluez` library is necessary for running RSSI code.
 ```bash
 pip install pybluez
