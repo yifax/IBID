@@ -20,5 +20,26 @@
 * Feasycom Long Range Bluetooth iBeacons
 * Echo Dot V3
 
-###
+### Part 1: Interaction between Two Cars: Car Following Algorithm
+#### Features
+* Leading car have multiple sensors, following car have no sensor.
+* Leading car transmits detected environment information to the following car.
+* Leading car controls the following car by command signals via Bluetooth channel.
+#### Demo
+
+### Part 2: Interactions between Cars and Bluetooth Stations: Indoor Positioning System via RSSI
+#### Algorithm
+* Step 1: Scan the RSSI values
+* Step 2: Find out three Bluetooth iBeacons by filtering Bluetooth addresses
+* Step 3: Calculate distances between the car and all three iBeacons
+* Step 4: Calculate car coordinate pair by applying Heron's formula
+* Step 5: Use this coordinate for indoor navigation
+#### Demo
+
+### Part 3: Interactions between Human and Cars: Voice Control Sysyem
+#### Features
+* Voice commands activate Echo Dot
+* Alexa API send Raspberry Pi server processed NLP package: [{Device name}, {Operation name}]
+* Raspberry Pi controls Master car directly and controls Slave cars by Bluetooth command signals
+#### Demo
 
