@@ -28,6 +28,7 @@ Instead of adding onboard sensors, we want to make the following car to be blind
 * Leading car transmits detected environment information to the following car.
 * Leading car controls the following car by command signals via Bluetooth channel.
 #### Demo
+[![Demo Video](/Src/Demo1.png)](https://www.youtube.com/watch?v=8CCx7NysUWU)
 
 ### Part 2: Interactions between Cars and Bluetooth Stations: Indoor Positioning System via RSSI
 #### Algorithm
@@ -37,6 +38,7 @@ Instead of adding onboard sensors, we want to make the following car to be blind
 * Step 4: Calculate car coordinate pair by applying Heron's formula
 * Step 5: Use this coordinate for indoor navigation
 #### Demo
+[![Demo Video](/Src/Demo2.png)](https://www.youtube.com/watch?v=NX05F57GPa4)
 
 ### Part 3: Interactions between Human and Cars: Voice Control Sysyem
 #### Features
