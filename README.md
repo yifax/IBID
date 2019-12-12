@@ -14,7 +14,7 @@ Instead of adding onboard sensors, we want to make the following car to be blind
 ### Hardware Used in This Porject
 * Arduino Uno
 * Raspberry Pi 3B+
-* Ultrasonic Sensor
+* HCSR04 Ultrasonic Sensor
 * IR Dectector
 * L298N Motor Drive Controller
 * HC-05 Bluetooth Chip
@@ -28,6 +28,31 @@ Instead of adding onboard sensors, we want to make the following car to be blind
 * Leading car have multiple sensors, following car have no sensor.
 * Leading car transmits detected environment information to the following car.
 * Leading car controls the following car by command signals via Bluetooth channel.
+
+#### Codes and Instructions
+
+##### Raspberry Pi GPIO Connection
+![Splitting](/Src/GPIO.png)
+
+##### Bluetooth Communication
+Default mode of Raspberry Pi onboard bluetooth module is SLAVE ACCEPT, need to change it to MASTER before connect HC-05 on Arduino
+```bash
+sudo hciconfig hci0 lm master
+```
+After this, use `Bluetoothctl` tool to scan, pair and trust target HC-05 module.
+Then, connect it as software serial port so that we can send commands via Bluetooth channel.
+```bash
+sudo rfcomm connect hci0 XX:XX:XX:XX:XX:XX
+```
+
+##### Run Control Code on Raspberry Pi
+```bash
+cd IBID/Master_Control
+python3 ControlBT.py
+```
+##### Download Arduino Code to the Following Car
+`Slave.ino` in `IBID/Slave_Control/Slave`
+
 
 #### Demo
 [![Demo Video](/Src/Demo1.png)](https://www.youtube.com/watch?v=8CCx7NysUWU)
