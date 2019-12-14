@@ -1,14 +1,14 @@
 # Project IBID
 ## Interaction Between Intelligent Devices
------------
+
 ## Team Members
 * Zeyu Wang
 * Yifan Xu
 -----------
 ## Project Repositories
 [Github](https://github.com/yifax/IBID "Check All Codes")
------------
 
+___
 ## 目录
 * [横线](#横线)
 * [标题](#标题)
@@ -21,7 +21,7 @@
     * 斜体
     * 粗体
     * 删除线
-
+___
 
 ### Project Summary
 #### Goal
