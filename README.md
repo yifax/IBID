@@ -34,7 +34,7 @@ Instead of adding onboard sensors, we want to make the following car to be blind
 * Leading car transmits detected environment information to the following car.
 * Leading car controls the following car by command signals via Bluetooth channel.
 
-### Demo
+### Demo: Two Car Following
 [![Demo Video](/Src/Demo1.png)](https://www.youtube.com/watch?v=8CCx7NysUWU)
 
 ### Test Code and Instructions
@@ -61,7 +61,6 @@ python3 ControlBT.py
 `Slave.ino` in `IBID/Slave_Control/Slave`
 
 
-
 ## Part 2: Interactions between Cars and Bluetooth Stations: Indoor Positioning System via RSSI
 ### Process & Algorithm
 * Step 1: Use Bluetooth chip to scan the RSSI values
@@ -70,11 +69,12 @@ python3 ControlBT.py
 * Step 4: Calculate car coordinate pair by applying **Heron's formula**
 * Step 5: Use this coordinate for indoor navigation
 
-### Demo
-[![Demo Video](/Src/Demo2.png)](https://www.youtube.com/watch?v=4V5qMFQUmjc)
-
 ### Indoor Positioning Coordinates
 ![RSSI](/Src/RSSI.jpg)
+
+
+### Demo: Move to one Bluetooth Station
+[![Demo Video](/Src/Demo2.png)](https://www.youtube.com/watch?v=4V5qMFQUmjc)
 
 ### Test Code and Instructions
 `pybluez` library is necessary for running RSSI code.
