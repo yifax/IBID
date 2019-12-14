@@ -8,7 +8,7 @@
 [Github](https://github.com/yifax/IBID "Check All Codes")
 ___
 
-## 目录
+## Menu
 * [Project Summary](#Project Summary)
 * [Hardware](#Hardware Used in This Porject)
 * [Interaction between Two Cars: Car Following Algorithm](#Part 1: Interaction between Two Cars: Car Following Algorithm)
