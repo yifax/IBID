@@ -4,10 +4,12 @@
 * Zeyu Wang
 * Yifan Xu
 
-## Project Repositories
+## Links
+### Project Repositories
 [Github](https://github.com/yifax/IBID "Check All Codes")
-## Final Presentation Video
+### Final Presentation Video
 [Youtube](https://studio.youtube.com/video/t7B0CVJgKWM "Jump to Youtube")
+
 ------------------------------
 
 ## Project Introduction
