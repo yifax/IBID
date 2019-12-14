@@ -29,14 +29,15 @@ Instead of adding onboard sensors, we want to make the following car to be blind
 * Echo Dot V3
 
 ## Part 1: Interaction between Two Cars: Car Following Algorithm
-
-### Features
+### Design & Features
 * Leading car have multiple sensors, following car have no sensor.
 * Leading car transmits detected environment information to the following car.
 * Leading car controls the following car by command signals via Bluetooth channel.
 
-### Tst Code and Instructions
+### Demo
+[![Demo Video](/Src/Demo1.png)](https://www.youtube.com/watch?v=8CCx7NysUWU)
 
+### Test Code and Instructions
 #### Raspberry Pi GPIO Connection
 ![GPIO](/Src/GPIO.png)
 
@@ -59,24 +60,23 @@ python3 ControlBT.py
 #### Download Arduino Code to the Following Car
 `Slave.ino` in `IBID/Slave_Control/Slave`
 
-#### Demo
-[![Demo Video](/Src/Demo1.png)](https://www.youtube.com/watch?v=8CCx7NysUWU)
-
 
 
 ## Part 2: Interactions between Cars and Bluetooth Stations: Indoor Positioning System via RSSI
-
-### Algorithm
-* Step 1: Scan the RSSI values
-* Step 2: Find out three Bluetooth iBeacons by filtering Bluetooth addresses
-* Step 3: Calculate distances between the car and all three iBeacons
+### Process & Algorithm
+* Step 1: Use Bluetooth chip to scan the RSSI values
+* Step 2: Find out three Bluetooth iBeacons(stations) thru a a Bluetooth addresses filter
+* Step 3: Calculate distances between the car and target iBeacons
 * Step 4: Calculate car coordinate pair by applying **Heron's formula**
 * Step 5: Use this coordinate for indoor navigation
+
+### Demo
+[![Demo Video](/Src/Demo2.png)](https://www.youtube.com/watch?v=4V5qMFQUmjc)
 
 ### Indoor Positioning Coordinates
 ![RSSI](/Src/RSSI.jpg)
 
-### Test Code and Test Instructions
+### Test Code and Instructions
 `pybluez` library is necessary for running RSSI code.
 ```bash
 pip install pybluez
@@ -84,13 +84,9 @@ cd IBID/Rssi
 python3 testblescan.py
 ```
 
-### Demo
-[![Demo Video](/Src/Demo2.png)](https://www.youtube.com/watch?v=4V5qMFQUmjc)
-
 
 ## Part 3: Interactions between Human and Cars: Voice Control System
-
-### Process
+### Design & Process
 * Make Raspberry Pi to be a `Linux Server`
 * Use `Echo Dot`/`Amazon Alexa App` to fetch voice commands
 * Build an `Alexa Skill` to do Nature Language Processing in the Cloud
