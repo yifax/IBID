@@ -84,7 +84,6 @@ cd IBID/Rssi
 python3 testblescan.py
 ```
 
-
 ## Part 3: Interactions between Human and Cars: Voice Control System
 ### Design & Process
 * Make Raspberry Pi to be a `Linux Server`
@@ -101,11 +100,23 @@ python3 testblescan.py
 [![Demo Video](/Src/Demo3.png)](https://www.youtube.com/watch?v=NX05F57GPa4)
 
 
-## Conclusion: Combine 3 Parts Together
-We combine all three parts above together to make our final demo. In this demo, we use voice to activate the leading car(Master). When leading car moves, it trigers the following algorithm, which guide the following car(Slave) to follow behind but keep a safe distance basing on the information acquired by both the RSSI system and the sensor system.
+## Final Stage: Combine 3 Parts Together
+At last, we combine all three parts above together to make our final demo. In this demo, we use voice to activate the leading car(Master). When leading car moves, it trigers the following algorithm, which guide the following car(Slave) to follow behind but keep a safe distance basing on the information acquired by both the RSSI system and the sensor system.
 
 ### Demo
 [![Demo Video](/Src/Demo4.png)](https://www.youtube.com/watch?v=pV74apRyUJk)
 
-### Summary
+## Summary
+In all, we successfully built a vehicle interaction system(simulation) this quarter including an indoor positioning system, sensor information sharing platform and voice control system. Human players are able to control all registered vehicles in this system simply by voice. Vehicles inside the system, human-operated or not, are able to communicate with each other to achieve simple collaboration like following or obstacle avoiding.
+### Strength
+* Multiple Interactions: HCI & CCI
+* Accuracy: Combine indoor positioning & sensor information sharing
+* Performance: NLP on the Cloud and control operation on the Edge
+* Unification: Same protocol on multiple cars, both Arduino & Raspberry Pi
+### Weakness
+* Voice control does not respond 100% correctly
+* Need better algorithms & sensors to handle complex situations
+* RSSI values sometime fluctuate, especially when the car is too close to a iBeacon 
+
+## Conclusion
 Although we don't have enough funding/support to make a test on real vehicles, we believed that our trial is still meaningful and prospective. The Arduino-Raspberry Pi intelligent car system can be regarded as a simulation of what might happen in the future. Currently, we mainly rely on cheap ultrasonic and IR sensors, but the same idea can be realized on Tesla sedan, which should be equipped with much more precise radars for similar purposes. Now we use Bluetooth iBeacons to build an indoor positioning system. When it goes to the outdoor, we can simply change the source to be GPS satellites while keeping the original positioning algorithm structures. What we did was not playing with toy cars, but a low-cost prototype model for the future way of transportation system.
