@@ -156,8 +156,19 @@ def rssi():
 
     x = helen(side[0],side[1],gao) * 2 / gao
     y = helen(side[1],side[2],di) * 2 / di
-    cod = [x,y]
-    return cod
+    coor = [x,y]
+    return coor
+
+def locating():
+    coor = rssi()
+    if ((coor[0] > 1.5) and (oor[0] > 1.5)):
+        turn_left(1.5)
+    elif ((coor[0] < 1.5) and (oor[0] < 1.5)):
+        turn_right(1.5)
+    elif ((coor[0] < 1.5) and (oor[0] > 1.5)):
+        turn_left(0.75)
+    elif ((coor[0] > 1.5) and (oor[0] < 1.5)):
+        turn_right(0.75)
 
 # Master Operation
 def forward():
@@ -326,7 +337,6 @@ def guide_slave():
     bluet(0)
 
 # Alexa API
-
 @ask.launch
 def launch():
     speech_text = 'Welcome to Raspberry Pi Automation, start now?'
@@ -339,8 +349,8 @@ def Master(device,direction):
             pause()
             return statement('Okay, master is stopped.')
         elif direction in FORWARD:
+            locating()
             get_inital()
-            rssi()
             guide_slave()
             pause()
             return statement('Master now run and slave will follow.')
