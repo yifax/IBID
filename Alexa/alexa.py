@@ -2,7 +2,16 @@ import blescan
 import sys
 import math
 import bluetooth._bluetooth as bluez
+import logging
+import os
 
+from flask import Flask
+from flask_ask import Ask, request, session, question, statement
+import RPi.GPIO as GPIO
+import time, math
+from time import sleep
+import serial
+import sys
 
 port = serial.Serial("/dev/rfcomm0", baudrate=9600) # necessary env sitting for BT communication
 address = 0x48	# default address of PCF8591(A/D)
