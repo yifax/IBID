@@ -1,26 +1,20 @@
-# Project IBID
-## Interaction Between Intelligent Devices
+# Project IBID: Interaction Between Intelligent Devices
 
 ## Team Members
 * Zeyu Wang
 * Yifan Xu
------------
+
 ## Project Repositories
 [Github](https://github.com/yifax/IBID "Check All Codes")
-
 ___
+
 ## 目录
-* [横线](#横线)
-* [标题](#标题)
-* [文本](#文本)
-    * 普通文本
-    * 单行文本
-    * 多行文本
-    * 文字高亮
-    * 换行
-    * 斜体
-    * 粗体
-    * 删除线
+* [Project Summary](#Project Summary)
+* [Hardware](#Hardware Used in This Porject)
+* [Interaction between Two Cars: Car Following Algorithm](#Part 1: Interaction between Two Cars: Car Following Algorithm)
+* [Interactions between Cars and Bluetooth Stations](#Part 2: Interactions between Cars and Bluetooth Stations: Indoor Positioning System via RSSI)
+* [Interactions between Human and Cars](#Part 3: Interactions between Human and Cars: Voice Control System)
+* [Integration](#Final Stage: Combine 3 Parts Together)
 ___
 
 ### Project Summary
@@ -100,7 +94,7 @@ python3 testblescan.py
 [![Demo Video](/Src/Demo2.png)](https://www.youtube.com/watch?v=4V5qMFQUmjc)
 
 
-### Part 3: Interactions between Human and Cars: Voice Control Sysyem
+### Part 3: Interactions between Human and Cars: Voice Control System
 
 #### Process
 * Make Raspberry Pi to be a `Linux Server`
