@@ -94,7 +94,9 @@ python3 testblescan.py
 * ![voice](/Src/alexa.png)
 
 ### Platform and Tools
-![voice](/Src/voice.png)
+* Falsk-Ask: Python library to utilize Alexa API on Raspberry Pi.
+* Ngrok: Reversed Proxy tool to expose Raspberry Pi server to the public Internet.
+* Amazon Developer Console: Design customized Alexa Skill to realize voice control.
 
 ### Demo
 [![Demo Video](/Src/Demo3.png)](https://www.youtube.com/watch?v=NX05F57GPa4)
